@@ -1,0 +1,66 @@
+﻿@model SmartTalk.ViewModels.SearchQuestionsViewModel
+
+@{
+    ViewBag.Title = "ShowTenMostRecent";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+<div class="container">
+    <h2>Въпроси</h2>
+    <div class="search">
+        <input type="text" id="Search_textbox" placeholder="Търси въпроси" />
+        <button class="btn btn-primary" type="button" id="Search_button">Търси</button>
+    </div>
+    <div id="answers">
+        @foreach (var question in Model.Questions)
+        {
+            <div class="list">
+                <a href="~/Questions/Details/@question.Id"><span style="display: block">
+                    @question.QuestionBrief
+                    <br />
+                    @question.Category
+                    <br />
+                    @question.AuthorName
+                </span></a>
+            </div>
+            if (HttpContext.Current.Session["Id"] != null) {
+                if (question.AuthorName == HttpContext.Current.Session["Username"].ToString() || HttpContext.Current.Session["Role"].ToString() == "Moderator" || HttpContext.Current.Session["Role"].ToString() == "Admin"){
+                <a class="btn btn-danger btn-xs" href="/Questions/Delete/@question.Id">Изтрий</a>
+                }
+            }
+        }
+
+        @for (int i = 1; i <= Model.NumberOfPages; i++)
+        {
+            if (Model.ActivePage == i)
+            {
+                <span>@i</span>
+            }
+            else
+            {
+                <a href="@i">@i</a>
+            }
+         }
+
+    </div>
+</div>
+<script>
+    $('document').ready(function () {
+        $('#Search_button').on("click", function () {
+            $.ajax({
+                dataType: "html",
+                type: "GET",
+                url: "/Questions/Search/" + $("#Search_textbox").val() + "/1",
+                success: function (result) {
+                    $('#answers').html(result);
+
+                },
+                error: function () {
+                    alert("error");
+                }
+            })
+        })
+    })
+</script>

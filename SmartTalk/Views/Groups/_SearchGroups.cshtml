@@ -1,0 +1,49 @@
+﻿@model SmartTalk.ViewModels.GroupsSearchViewModel
+
+@if (Model.Groups.Count == 0)
+{
+    <h3>Няма намерени групи.</h3>
+}
+else
+{
+    foreach (var group in Model.Groups)
+    {
+            <div class="list">
+                <a href="Details/@group.Id">
+                <strong>@group.Name</strong>
+                <br />
+                Групов лидер: @group.GroupLeaderName Членове: @group.NumberOfMembers</a>
+            </div>
+                if(HttpContext.Current.Session["Id"] != null)
+                {
+                    if (group.IsLoggedUserMember == true && group.GroupLeaderName != HttpContext.Current.Session["Username"].ToString())
+                    {
+                        <a class="btn btn-primary btn-xs" href="/Groups/Leave/@group.Id">Напусни</a>
+                    }
+                    else
+                    {
+                        if(group.IsLoggedUserRequested == false && group.IsLoggedUserMember == false)
+                        {
+                            <a class="btn btn-primary btn-xs" href="/Groups/RequestGroup/@group.Id">Заяви членство</a>
+                        }
+                        if (group.IsLoggedUserRequested == true)
+                        {
+                            <span>Заявено</span>
+                        }
+                    }
+                }
+            
+        }
+        <br />
+        for (int i = 1; i <= Model.NumberOfPages; i++)
+        {
+            if (Model.ActivePage == i)
+            {
+                <span>@i</span>
+            }
+            else
+            {
+                <a href="@i">@i</a>
+            }
+         }
+}

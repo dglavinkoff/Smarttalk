@@ -1,0 +1,27 @@
+﻿
+    <nav>
+        <ul id="menu">
+            <li><a href="/Account/TopTenUsers/1">Потребители</a></li>
+            <li><a href="/Categories/ShowAll">Категории</a></li>
+            <li><a href="/Questions/ShowTenMostRecent/1">Въпроси</a></li>
+            @if (HttpContext.Current.Session["Id"] == null)
+            {
+                <li><a href="/Account/Login">Влез</a></li>
+                <li><a href="/Account/Register">Регистрирай се</a></li> 
+            }                                                              
+            @if (HttpContext.Current.Session["Id"] != null)
+            {
+                <li><a href="/Groups/TopTenGroups/1">Групи</a></li>
+                <li><a href="~/Questions/AskQuestion">Задай въпрос</a></li>               
+                <li><a href="/Account/ProfileDetails/@HttpContext.Current.Session["Id"]">Профил</a></li>
+            }
+            @if (HttpContext.Current.Session["Role"] != null && (HttpContext.Current.Session["Role"].ToString() == "Moderator" || HttpContext.Current.Session["Role"].ToString() == "Admin"))
+            { 
+                <li><a href="/Management/ControlPanel">Контролен панел</a></li>
+            }
+            @if (HttpContext.Current.Session["Id"] != null)
+            {
+                <li><a href="/Account/Logout">Излез</a></li>
+            }
+        </ul>
+    </nav>

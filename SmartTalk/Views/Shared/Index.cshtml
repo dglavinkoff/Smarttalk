@@ -1,0 +1,45 @@
+﻿@model SmartTalk.ViewModels.AccountHomeViewModel
+@if(HttpContext.Current.Session["Id"] == null)
+{
+    <div class="clearfix" id="news" style="width: 100%; padding-left: 20%">
+            <h4>Новини</h4>
+            @foreach (var item in Model.News)
+            {
+                <span class="news-list">
+                <a href="@item.Link">@item.Title</a>
+                </span>
+            }
+    </div>
+}
+@if (HttpContext.Current.Session["Id"] != null)
+{
+    <div class="clearfix" id="news">
+        <h4>Новини</h4>
+        @foreach (var item in Model.News)
+        {
+            <span class="news-list">
+            <a href="@item.Link">@item.Title</a>
+            </span>
+        }
+    </div>
+    
+    <div id="notifications">
+        <h4>Известия</h4>
+        @if (Model.Notifications.Count == 0)
+        {
+                <h5>Нямате скорошни известия.</h5>      
+        }
+        else
+        {
+            foreach (var not in Model.Notifications)
+            {
+            <span class="not-list">
+                <a href="@not.ActionLink">@not.Message</a>  <a href="/Notifications/Delete/@not.Id">x</a>         
+            </span>
+            
+            }
+        }
+    </div>
+}
+<div id="content">
+</div>

@@ -1,0 +1,63 @@
+﻿@model SmartTalk.ViewModels.AccountLoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+<div class="container">
+    <h2>Влез</h2>
+
+    @using (Html.BeginForm()) {
+        @Html.ValidationSummary(true)
+        <div id="content">
+        <fieldset>
+            <legend>AccountLoginViewModel</legend>
+
+            <label>Потребителско име</label>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Username)
+                @Html.ValidationMessageFor(model => model.Username)
+            </div>
+
+            <label>Парола</label>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+
+            <p>
+                <button class="btn btn-primary btn-lg" type="submit" >Влез</button>
+                <a id="forgotten" href="#">Забравена парола</a>
+            </p>
+        </fieldset>
+        </div>
+    }
+
+</div>
+
+<script>
+    $('document').ready(function () {
+        $("#forgotten").on('click', function () {
+            var username = $("#Username").val();
+            console.log(username);
+            if (username == null || username == "") {
+                $("#Username").after("<span> Please enter username.</span>");
+            }
+            else
+            {
+                $.ajax({
+                    dataType: "html",
+                    type: "GET",
+                    url: "/Account/ForgottenPassword/" + username,
+                    success: function (response) {
+                        $("#content").html("<h2>" + response + "</h2>");
+                    }
+                })
+            }
+            
+        })
+    })
+</script>

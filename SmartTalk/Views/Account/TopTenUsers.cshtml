@@ -1,0 +1,92 @@
+﻿@model SmartTalk.ViewModels.SearchUsersViewModel
+@{
+    ViewBag.Title = "GetUsers";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+<div class="container">
+    <h2>Потребители</h2>
+    <div class="search">
+        <input type="text" id="Search_textbox" placeholder="Tърси в потребители" />
+        <button type="button" class="btn btn-primary" id="Search_button" >Търси</button>
+    </div>
+    <div id="content">
+        
+        @foreach (var user in Model.users) 
+        {      
+            <div class="list">
+            <a href="~/Account/ProfileDetails/@user.Id"><span style="display: inline">
+                    
+                    @user.Username
+                    @user.FollowersCount последователи
+            </span></a></div>
+            <span>
+            @if(HttpContext.Current.Session["Id"] != null)
+            {
+                if(user.Username != HttpContext.Current.Session["Username"].ToString())
+                {
+                    if (user.IsFollowedByLoggedUser == false && user.isLoggedUserBanned == false)
+                    {        
+                        <a class="btn btn-primary btn-xs" href="/Account/FollowUser/@user.Id">Следи</a>
+                    }
+                    else if(user.isLoggedUserBanned == false)
+                    {
+                        <a class="btn btn-primary btn-xs" href="/Account/Unfollow/@user.Id">Не следи</a>
+                    }
+                    else
+                    {
+                        <span>Забранен</span>
+                    }
+                }
+                if (user.Username != HttpContext.Current.Session["Username"].ToString())
+                {
+                    if (user.isBannedByLoggedUser == false)
+                    {
+                            <a class="btn btn-primary btn-xs" href="/Account/Ban/@user.Id">Забрани</a>
+                    }         
+                    else
+                    {
+                        <a class="btn btn-primary btn-xs" href="/Account/Unban/@user.Id">Разреши</a>
+                    }
+                }
+                if (HttpContext.Current.Session["Role"].ToString() == "Admin" && user.Username != HttpContext.Current.Session["Username"].ToString())
+                {
+                    <a class="btn btn-danger btn-xs" href="~/Account/Delete/@user.Id">Изтрий</a>
+                }
+            }
+            </span>        
+        }
+        
+        @for (int i = 1; i <= Model.NumberOfPages; i++)
+        {
+            if (Model.ActivePage == i)
+            {
+                <span>@i</span>
+            }
+            else
+            {
+                <a href="@i">@i</a>
+            }
+         }      
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('document').ready(function () {
+        $('#Search_button').on('click', function () {
+            $.ajax({
+                dataType: "html",
+                type: "GET",
+                url: "/Account/SearchUsers/" + $("#Search_textbox").val() + "/1",
+                success: function (result) {
+                    $('#content').html(result);
+
+                },
+                error: function () {
+                    alert("error");
+                }
+            })
+        })
+    })
+</script>

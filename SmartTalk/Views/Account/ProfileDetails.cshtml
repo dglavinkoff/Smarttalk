@@ -1,0 +1,211 @@
+﻿@model SmartTalk.ViewModels.AccountDetailsViewModel
+
+@{
+    ViewBag.Title = "ProfileDetails";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+@Scripts.Render("~/bundles/jqueryval")
+<div class="container">
+    <h2>Детайли на профила</h2>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#details" data-toggle="tab">Детайли</a></li>
+        <li><a href="#questions" data-toggle="tab">Въпроси</a></li>
+        @if (HttpContext.Current.Session["Id"] != null && (int)HttpContext.Current.Session["Id"] == Model.Id)
+        {
+            <li><a href="#favorites" data-toggle="tab">Любими</a></li>
+            <li><a href="#followers" data-toggle="tab">Последователи</a></li>
+            <li><a href="#banned" data-toggle="tab">Забранени потребители</a></li>    
+        }
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="details">
+            <fieldset>
+                <legend>AccountDetailsViewModel</legend>
+                <div class="display-box">
+                    <span class="display-label">
+                         Потребителско име:
+                    </span>
+                    <span class="display-field">
+                    @Html.DisplayFor(model => model.Username)
+                    <br />
+                </span>
+                </div>
+
+                <div class="display-box">
+                    <span class="display-label">
+                         Име:
+                    </span>
+                    <span class="display-field">
+                        @Html.DisplayFor(model => model.Firstname)
+                        <br />
+                    </span>
+                </div>
+
+                <div class="display-box">
+                    <span class="display-label" style="font: bolder">
+                         Фамилия:
+                    </span>
+                    <span class="display-field">
+                        @Html.DisplayFor(model => model.Lastname)
+                        <br />
+                    </span>
+                </div>
+
+                <div class="display-box">
+                    <span class="display-label" style="font: bolder">
+                         Роля:
+                    </span>
+                    <span class="display-field">
+                        @Html.DisplayFor(model => model.Role)
+                        <br />
+                    </span>
+                </div>
+            </fieldset>
+            @if(HttpContext.Current.Session["Id"] != null)
+            {
+                if (Model.Username == HttpContext.Current.Session["Username"].ToString())
+                {
+                    <a id="changePassword" href="/Account/ChangePassword/@HttpContext.Current.Session["Id"]">Промени парола</a>
+                }
+                if(Model.Username != HttpContext.Current.Session["Username"].ToString())
+                {
+                    if (Model.IsFollowedByLoggedUser == false && Model.isLoggedUserBanned == false)
+                    {        
+                        <a href="/Account/FollowUser/@Model.Id">Следи</a>
+                    }
+                    else if (Model.isLoggedUserBanned == false)
+                    {
+                        <a href="/Account/Unfollow/@Model.Id">Не следи</a>
+                    }
+                    else
+                    {
+                        <span>Забранен</span>
+                    }
+                }
+                if (Model.Username != HttpContext.Current.Session["Username"].ToString())
+                {
+                    if (Model.isBannedByLoggedUser == false)
+                    {
+                            <a href="/Account/BanUser/@Model.Id">Забрани</a>
+                    }         
+                    else
+                    {
+                        <a href="/Account/Unban/@Model.Id">Разреши</a>
+                    }
+                }
+                if (HttpContext.Current.Session["Role"].ToString() == "Admin" && Model.Username != HttpContext.Current.Session["Username"].ToString())
+                {
+                    if (Model.Role == "Member")
+                    {
+                        <a href="/Account/Promote/@Model.Id">Повиши</a>
+                    }
+                    if (Model.Role == "Moderator")
+                    {
+                        <a href="/Account/Demote/@Model.Id">Понижи</a>
+                    }
+                    <a href="~/Account/Delete/@Model.Id">Изтрий</a>
+                }
+            }
+            <br />
+        </div>
+
+        <div class="tab-pane fade" id="questions">
+            @if (HttpContext.Current.Session["Id"] != null && Model.Id == (int)HttpContext.Current.Session["Id"] && Model.Questions.Count == 0)
+            {
+                <h3>Не сте задали никакви въпроси.</h3>
+            }
+            @if (HttpContext.Current.Session["Id"] != null && Model.Id != (int)HttpContext.Current.Session["Id"] && Model.Questions.Count == 0)
+            {
+                <h3>Този потребител не е задал никакви въпроси.</h3> 
+            }
+            else
+            {
+                foreach (var question in Model.Questions)
+                {
+                    <div class="list">
+                    <a href="~/Questions/Details/@question.Id"><span style="display: block">
+                    @question.QuestionBrief
+                    <br />
+                    Category: @question.Category
+                    </span></a>
+                    </div>
+                    if ( HttpContext.Current.Session["Id"] != null && HttpContext.Current.Session["Username"].ToString() == question.AuthorName)
+                    {
+                        <a class="btn btn-danger btn-xs" href="/Questions/Delete/@question.Id">Изтрий</a>
+                    }
+                }
+                  
+            }       
+        </div>
+        @if (HttpContext.Current.Session["Id"] != null && (int)HttpContext.Current.Session["Id"] == Model.Id)
+        {
+            <div class="tab-pane fade" id="favorites">
+                @if (Model.Favorites.Count == 0)
+                {
+                    <h3>Нямате любими.</h3>
+                }
+                else
+                {
+                    foreach (var user in Model.Favorites)
+                    {
+                        <div style="margin-top: 20px"><div style="display: inline; margin-top: 10px" class="list"><a href="/Account/ProfileDetails/@user.Id">@user.Username</a></div>  <a class="btn btn-primary btn-xs" href="/Account/Unfollow/@user.Id">Не следи</a><br /></div>
+                    }
+                }
+            </div>
+        
+            <div class="tab-pane fade" id="followers">
+                @if (Model.Followers.Count == 0)
+                {
+                    <h3>Нямате последователи.</h3>
+                }
+                else
+                {
+                    foreach (var user in Model.Followers)
+                    {
+                        <div style="margin-top: 20px;"><div class="list"><a href="/Account/ProfileDetails/@user.Id">@user.Username</a></div>  <a class="btn btn-primary btn-xs" href="/Account/BanUser/@user.Id">Забрани</a><br /></div>
+                    }
+                }
+            </div>
+        
+            <div class="tab-pane fade" id="banned">
+                @if (Model.Banned.Count == 0)
+                {
+                    <h3>Не сте забранили възможността за следване на никого.</h3>
+                }
+                else
+                {
+                    foreach (var user in Model.Banned)
+                    {
+                        <div style="margin-top: 20px;"><div class="list"><a href="/Account/ProfileDetails/@user.Id">@user.Username</a></div>  <a class="btn btn-primary btn-xs" href="/Account/Unban/@user.Id">Разреши</a><br /></div>
+                    }
+                }
+            </div>
+        
+        }
+    </div>
+</div>
+
+<script>
+    $('document').ready(function () {
+        $("#changePassword").on('click', function () {         
+            $.ajax({
+                dataType: "html",
+                type: "GET",
+                url: this.href.toString(),
+                success: function (result) {
+                    $("#details").html(result);
+                    return false;
+                },
+                error: function () {
+                    $("#details").html("<h3>Something went wrong. Please try again later.</h3>");
+                    return false;
+                }
+            })
+            return false;
+        })
+    })
+</script>

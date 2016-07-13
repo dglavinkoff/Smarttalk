@@ -1,0 +1,24 @@
+﻿@model SmartTalk.ViewModels.SearchQuestionsViewModel
+
+@foreach (var question in Model.Questions)
+{
+    <a href="~/Questions/Details/@question.Id"><span style="display: block">
+        @question.QuestionBrief
+        <br />
+        @question.Category
+        <br />
+        @question.AuthorName
+    </span></a>
+}
+
+@for (int i = 1; i <= Model.NumberOfPages; i++)
+        {
+            if (Model.ActivePage == i)
+            {
+                <span>@i</span>
+            }
+            else
+            {
+                <a href="@i">@i</a>
+            }
+         }

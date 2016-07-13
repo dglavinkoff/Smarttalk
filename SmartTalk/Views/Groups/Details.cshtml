@@ -1,0 +1,115 @@
+﻿@model SmartTalk.ViewModels.GroupsDetailsViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+@Scripts.Render("~/bundles/jqueryval")
+
+<div class="container">
+    <h2>Детайли на групата</h2>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#details" data-toggle="tab">Детайли</a></li>
+        @if(Model.IsLoggedUserMember || HttpContext.Current.Session["Role"].ToString() == "Admin" || HttpContext.Current.Session["Role"].ToString() == "Moderator")
+            {
+                <li><a href="#questions" data-toggle="tab">Въпроси</a></li>
+            }
+        @if(Model.IsLoggedUserMember)
+        {          
+            <li><a href="/Questions/AskQuestion/@Model.Id">Задай въпрос</a></li>
+        }
+        @if (Model.IsLoggedUserLeader)
+        {
+            <li><a href="#requested" data-toggle="tab">Членски заявки</a></li>
+        }
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="details">
+            <div class="display-box"><label>Group leader:</label><a href="/Account/ProfileDetails/@Model.GroupLeaderId" >@Model.GroupLeaderName</a><br /></div>
+            <strong>Members:</strong><br />
+            @foreach (var user in Model.Members)
+            {
+                <div class="list">
+                    <a href="~/Account/ProfileDetails/@user.Username"><span style="display: inline">
+                        @user.Username
+                        @user.FollowersCount последователи
+                    </span></a>
+                </div>
+                if (HttpContext.Current.Session["Username"] != null && user.IsFollowedByLoggedUser == false && user.Username != HttpContext.Current.Session["Username"].ToString() && user.isLoggedUserBanned == false)
+                {
+                    <a class="btn btn-primary btn-xs" href="/Account/FollowUser/@user.Id/@HttpContext.Current.Session["Id"]">Последвай</a>
+                }
+                if (user.isBannedByLoggedUser == false && user.Username != HttpContext.Current.Session["Username"].ToString())
+                {
+                    <a class="btn btn-primary btn-xs" href="/Account/BannUser/@user.Id">Забрани </a>
+                }
+                if (Model.IsLoggedUserLeader && user.Id != Model.GroupLeaderId)
+                {
+                    <a class="btn btn-primary btn-xs" href="/Groups/Expell/@user.Id/@Model.Id">Изключи</a>
+                }
+                if (Model.IsLoggedUserMember && user.Id != Model.GroupLeaderId && user.Id == (int)HttpContext.Current.Session["Id"])
+                {
+                    <a class="btn btn-primary btn-xs" href="/Groups/Leave/@Model.Id">Напусни</a>
+                }
+                if (HttpContext.Current.Session["Role"] != null && HttpContext.Current.Session["Role"].ToString() == "Admin")
+                {
+                    <a class="btn btn-danger btn-xs" href="~/Account/Delete/@user.Id">Изтрий</a>
+                }
+                <br />
+            }
+        </div>
+        @if(Model.IsLoggedUserMember || HttpContext.Current.Session["Role"].ToString() == "Admin" || HttpContext.Current.Session["Role"].ToString() == "Moderator")
+        {
+            <div class="tab-pane fade" id="questions">
+                @if (Model.Questions.Count == 0)
+                {
+                    <h3>Няма никакви въпроси в тази група.</h3>
+                }
+                else
+                {
+                    foreach (var question in Model.Questions)
+                    {
+                        <div class="list">
+                        <a href="~/Questions/Details/@question.Id"><span style="display: block">
+                        @question.QuestionBrief
+                        <br />
+                        Category: @question.Category
+                        <br />
+                        Author: @question.AuthorName
+                        </span></a>
+                        </div>
+                        if (HttpContext.Current.Session["Id"] != null) {
+                         if (question.AuthorName == HttpContext.Current.Session["Username"].ToString() || HttpContext.Current.Session["Role"].ToString() == "Moderator" || HttpContext.Current.Session["Role"].ToString() == "Admin" || Model.IsLoggedUserLeader){
+                            <a class="btn btn-danger btn-xs"  href="/Questions/Delete/@question.Id">Изтрий</a>
+                         }
+                        }
+                    }
+                }
+            </div>
+        }
+        @if(Model.IsLoggedUserLeader)
+        {
+            <div class="tab-pane fade" id="requested">
+                @if (Model.RequestedUsers.Count == 0)
+                {
+                    <h3>Никой не е заявил тази група.</h3>
+                }
+                else
+                {
+                    foreach (var user in Model.RequestedUsers)
+                    {
+                        <div style="margin-top: 20px;">
+                            <div class="list"><a href="/Account/ProfileDetails/@user.Id">@user.Username</a></div>
+                            <a class="btn btn-primary btn-xs" href="/Groups/ConfirmMembership/@user.Id/@Model.Id">Приеми</a>
+                            <a class="btn btn-primary btn-xs" href="/Groups/DenyMembership/@user.Id/@Model.Id">Откажи</a>
+                        </div>
+                    }
+                }
+            </div>
+        }
+    </div>
+</div>

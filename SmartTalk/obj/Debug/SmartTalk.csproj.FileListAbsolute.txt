@@ -1,0 +1,170 @@
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\SmartTalk.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\SmartTalk.pdb
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\Antlr3.Runtime.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\DotNetOpenAuth.AspNet.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\DotNetOpenAuth.Core.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OAuth.Consumer.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OAuth.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OpenId.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\EntityFramework.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\Microsoft.Data.Edm.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\Microsoft.Data.OData.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\Microsoft.Web.Infrastructure.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\Microsoft.Web.WebPages.OAuth.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\Newtonsoft.Json.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Net.Http.Formatting.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Spatial.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.Helpers.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.Http.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.Http.OData.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.Http.WebHost.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.Mvc.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.Optimization.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.Razor.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.WebPages.Deployment.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.WebPages.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.WebPages.Razor.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\WebGrease.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\WebMatrix.Data.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\WebMatrix.WebData.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\EntityFramework.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\Newtonsoft.Json.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Net.Http.Formatting.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.Helpers.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.Http.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.Http.WebHost.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.Mvc.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.Razor.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.WebPages.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.WebPages.Deployment.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.WebPages.Razor.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\WebMatrix.Data.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\Microsoft.Web.WebPages.OAuth.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\WebMatrix.WebData.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\DotNetOpenAuth.AspNet.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\DotNetOpenAuth.Core.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OAuth.Consumer.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OAuth.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OpenId.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Web.Http.OData.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\Microsoft.Data.Edm.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\Microsoft.Data.OData.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\System.Spatial.xml
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\de\Microsoft.Data.Edm.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\es\Microsoft.Data.Edm.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\it\Microsoft.Data.Edm.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\de\Microsoft.Data.OData.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\es\Microsoft.Data.OData.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\fr\Microsoft.Data.OData.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\it\Microsoft.Data.OData.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\ja\Microsoft.Data.OData.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\ko\Microsoft.Data.OData.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\ru\Microsoft.Data.OData.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\de\System.Spatial.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\es\System.Spatial.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\fr\System.Spatial.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\it\System.Spatial.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\ja\System.Spatial.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\ko\System.Spatial.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\ru\System.Spatial.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\zh-Hans\System.Spatial.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\bin\zh-Hant\System.Spatial.resources.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\obj\Debug\SmartTalk.csprojResolveAssemblyReference.cache
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\obj\Debug\SmartTalk.dll
+D:\Projects\Web Development\Smart talk 4.0\SmartTalk\SmartTalk\obj\Debug\SmartTalk.pdb
+J:\Archive\SmartTalk\SmartTalk\bin\SmartTalk.dll
+J:\Archive\SmartTalk\SmartTalk\bin\SmartTalk.pdb
+J:\Archive\SmartTalk\SmartTalk\bin\Antlr3.Runtime.dll
+J:\Archive\SmartTalk\SmartTalk\bin\DotNetOpenAuth.AspNet.dll
+J:\Archive\SmartTalk\SmartTalk\bin\DotNetOpenAuth.Core.dll
+J:\Archive\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OAuth.Consumer.dll
+J:\Archive\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OAuth.dll
+J:\Archive\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OpenId.dll
+J:\Archive\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+J:\Archive\SmartTalk\SmartTalk\bin\EntityFramework.dll
+J:\Archive\SmartTalk\SmartTalk\bin\Microsoft.Data.Edm.dll
+J:\Archive\SmartTalk\SmartTalk\bin\Microsoft.Data.OData.dll
+J:\Archive\SmartTalk\SmartTalk\bin\Microsoft.Web.Infrastructure.dll
+J:\Archive\SmartTalk\SmartTalk\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+J:\Archive\SmartTalk\SmartTalk\bin\Microsoft.Web.WebPages.OAuth.dll
+J:\Archive\SmartTalk\SmartTalk\bin\Newtonsoft.Json.dll
+J:\Archive\SmartTalk\SmartTalk\bin\System.Net.Http.Formatting.dll
+J:\Archive\SmartTalk\SmartTalk\bin\System.Spatial.dll
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.Helpers.dll
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.Http.dll
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.Http.OData.dll
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.Http.WebHost.dll
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.Mvc.dll
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.Optimization.dll
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.Razor.dll
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.WebPages.Deployment.dll
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.WebPages.dll
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.WebPages.Razor.dll
+J:\Archive\SmartTalk\SmartTalk\bin\WebGrease.dll
+J:\Archive\SmartTalk\SmartTalk\bin\WebMatrix.Data.dll
+J:\Archive\SmartTalk\SmartTalk\bin\WebMatrix.WebData.dll
+J:\Archive\SmartTalk\SmartTalk\bin\EntityFramework.xml
+J:\Archive\SmartTalk\SmartTalk\bin\Newtonsoft.Json.xml
+J:\Archive\SmartTalk\SmartTalk\bin\System.Net.Http.Formatting.xml
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.Helpers.xml
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.Http.xml
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.Http.WebHost.xml
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.Mvc.xml
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.Razor.xml
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.WebPages.xml
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.WebPages.Deployment.xml
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.WebPages.Razor.xml
+J:\Archive\SmartTalk\SmartTalk\bin\WebMatrix.Data.xml
+J:\Archive\SmartTalk\SmartTalk\bin\Microsoft.Web.WebPages.OAuth.xml
+J:\Archive\SmartTalk\SmartTalk\bin\WebMatrix.WebData.xml
+J:\Archive\SmartTalk\SmartTalk\bin\DotNetOpenAuth.AspNet.xml
+J:\Archive\SmartTalk\SmartTalk\bin\DotNetOpenAuth.Core.xml
+J:\Archive\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OAuth.Consumer.xml
+J:\Archive\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OAuth.xml
+J:\Archive\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OpenId.xml
+J:\Archive\SmartTalk\SmartTalk\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+J:\Archive\SmartTalk\SmartTalk\bin\System.Web.Http.OData.xml
+J:\Archive\SmartTalk\SmartTalk\bin\Microsoft.Data.Edm.xml
+J:\Archive\SmartTalk\SmartTalk\bin\Microsoft.Data.OData.xml
+J:\Archive\SmartTalk\SmartTalk\bin\System.Spatial.xml
+J:\Archive\SmartTalk\SmartTalk\bin\de\Microsoft.Data.Edm.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\es\Microsoft.Data.Edm.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\fr\Microsoft.Data.Edm.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\it\Microsoft.Data.Edm.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\ja\Microsoft.Data.Edm.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\ko\Microsoft.Data.Edm.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\ru\Microsoft.Data.Edm.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\de\Microsoft.Data.OData.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\es\Microsoft.Data.OData.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\fr\Microsoft.Data.OData.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\it\Microsoft.Data.OData.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\ja\Microsoft.Data.OData.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\ko\Microsoft.Data.OData.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\ru\Microsoft.Data.OData.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\de\System.Spatial.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\es\System.Spatial.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\fr\System.Spatial.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\it\System.Spatial.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\ja\System.Spatial.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\ko\System.Spatial.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\ru\System.Spatial.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\zh-Hans\System.Spatial.resources.dll
+J:\Archive\SmartTalk\SmartTalk\bin\zh-Hant\System.Spatial.resources.dll
+J:\Archive\SmartTalk\SmartTalk\obj\Debug\SmartTalk.csprojResolveAssemblyReference.cache
+J:\Archive\SmartTalk\SmartTalk\obj\Debug\SmartTalk.dll
+J:\Archive\SmartTalk\SmartTalk\obj\Debug\SmartTalk.pdb

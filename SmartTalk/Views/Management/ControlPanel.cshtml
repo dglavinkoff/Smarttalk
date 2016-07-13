@@ -1,0 +1,136 @@
+﻿@model SmartTalk.ViewModels.ControlViewModel
+
+@{
+    ViewBag.Title = "ControlPanel";
+}
+
+
+<div class="container">
+    <h2>Контролен панел</h2>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#reportedQuestions" data-toggle="tab">Докладвани въпроси</a></li>
+        <li><a href="#reportedAnswers" data-toggle="tab">Докладвани отговори</a></li>
+        <li><a href="#reportedComments" data-toggle="tab">Докладвани коментари</a></li>
+        @if (HttpContext.Current.Session["Role"].ToString() == "Admin")
+        {
+            <li><a href="#moderators" data-toggle="tab">Модератори</a></li>
+            <li><a href="#requested" data-toggle="tab">Заявени категории</a></li>
+        }
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="reportedQuestions">
+            @if (Model.ReportedQuestions.Count == 0)
+            {
+                <h3>Няма докладвани въпроси.</h3> 
+            }
+            else
+            {
+                foreach (var question in Model.ReportedQuestions)
+                {
+                <div class="display-box">
+                    @question.QuestionBrief
+                    <br />
+                    Author: @question.Author.Username
+                    <br />
+                    Category: @question.Category.Name
+                    <br />
+                    <a class="btn btn-primary btn-xs" href="/Questions/ClearState/@question.Id">Изчисти състоянието</a>
+                    <a class="btn btn-danger btn-xs"  href="/Questions/Delete/@question.Id">Изтрий</a>
+                </div>              
+                
+                }
+            }
+        </div>
+
+        <div class="tab-pane fade" id="reportedAnswers">
+            @if (Model.ReportedAnswers.Count == 0)
+            {
+                <h3>Няма докладвани отговори.</h3>
+            }
+            else
+            {
+                foreach (var answer in Model.ReportedAnswers)
+                {
+                <div class="display-box">
+                    @answer.AnswerBody
+                    <br />
+                    Author: @answer.Author.Username
+                    <br />
+                    To Question: @answer.Question.QuestionBrief
+                    <br />
+                    <a class="btn btn-primary btn-xs" href="/Answers/ClearState/@answer.Id">Изчисти състоянието</a>
+                    <a class="btn btn-primary btn-xs" href="/Answers/Delete/@answer.Id">Изтрий</a>
+                </div>              
+                
+                }
+            }
+        </div>
+
+        <div class="tab-pane fade" id="reportedComments">
+            @if (Model.ReportedComments.Count == 0)
+            {
+                <h3>Няма докладвани коментари.</h3>
+            }
+            else
+            {
+                foreach (var comment in Model.ReportedComments)
+                {
+                <div class="display-box">
+                    @comment.CommentBody
+                    <br />
+                    Author: @comment.Author.Username
+                    <br />
+                    <a class="btn btn-primary btn-xs"  href="/Comments/ClearState/@comment.Id">Изчисти състоянието</a>
+                    <a class="btn btn-danger btn-xs" href="/Comments/Delete/@comment.Id">Изтрий</a>
+                </div>             
+                
+                <br />
+                }
+            }
+        </div>
+        @if (HttpContext.Current.Session["Role"].ToString() == "Admin")
+        {
+            <div class="tab-pane fade" id="moderators">
+                @if (Model.Moderators.Count == 0)
+                {
+                    <h3>Все още няма модератори.</h3>
+                }
+                else
+                {
+                    foreach (var user in Model.Moderators)
+                    {
+                    <div class="list" style="display: inline;"><a href="/Account/ProfileDetails/@user.Id">@user.Username</a></div>
+                    <a class="btn btn-primary btn-xs"  href="/Account/Demote/@user.Id">Понижи</a>
+                    <br />
+                    }
+                }
+            </div>
+
+            <div class="tab-pane fade" id="requested">
+                @if (Model.RequestedCategories.Count == 0)
+                {
+                    <h3>Няма заявени категории.</h3>
+                }
+                else
+                {
+                    foreach (var category in Model.RequestedCategories)
+                    {
+                    <div class="display-box">@category.Name
+                     <br />
+                     <a class="btn btn-primary btn-xs" href="/Categories/Confirm/@category.Id">Потвърди</a>
+                     <a class="btn btn-primary btn-xs" href="/Categories/Deny/@category.Id">Откажи</a>
+                    </div>
+                    
+                    }
+                }
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+}

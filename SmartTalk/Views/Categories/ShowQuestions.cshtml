@@ -1,0 +1,57 @@
+﻿@model SmartTalk.ViewModels.CategoriesShowQuestionsViewModel
+
+@{
+    ViewBag.Title = "ShowQuestions";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+<div class="container">
+    <div class="search">
+        <input type="text" id="Search_textbox" placeholder="Търси в категорията" />
+        <button class="btn btn-primary" type="submit" id="Search_button">Търси</button>
+    </div>
+    <div id="content">
+    @foreach (var question in Model.Questions) {
+        <a href="~/Questions/Details/@question.Id"><span style="display: block">
+            @question.QuestionBrief
+            <br />
+            Category: @question.Category
+            <br />
+            Author: @question.AuthorName
+        </span></a>
+    }
+
+        @for (int i = 1; i <= Model.NumberOfPages; i++)
+        {
+            if (Model.ActivePage == i)
+            {
+                <span>@i</span>
+            }
+            else
+            {
+                <a href="@i">@i</a>
+            }
+         }
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('document').ready(function () {
+        $('#Search_button').click(function () {
+            $.ajax({
+                dataType: "html",
+                type: "GET",
+                url: "/Questions/SearchByCategory/" + @Model.Id + "/" + $("#Search_textbox").val() + "/1",
+                success: function (result) {
+                    $('#content').html(result);
+
+                },
+                error: function () {
+                    alert("error");
+                }
+            })
+        })
+    })
+</script>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Smart Talk</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+            <header>
+                <div class="content-wrapper">
+                    <div class="float-left"><a href="/">Smart Talk</a></div>
+                    <div class="float-right">@Html.Partial("_MenuPartial")</div>
+                </div>
+            </header>
+            <div id="body">
+                <div class="container">
+                    @RenderBody()
+                </div>
+            </div>
+            <footer>
+                <div class="content-wrapper">
+                    <div class="float-left">
+                        <p>&copy; @DateTime.Now.Year - SMART TALK</p>
+                    </div>
+                </div>
+            </footer>
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

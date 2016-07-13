@@ -1,0 +1,207 @@
+﻿@model SmartTalk.ViewModels.QuestionDetailsViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/Moment.js"></script>
+
+<div class="container">
+
+    <fieldset>
+        <legend>QuestionDetailsViewModel</legend>
+
+        <h2>@Model.QuestionBrief</h2>
+
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Description)
+        </div>
+        <span id="qDetails">@Model.AuthorName -
+            <script>$("#qDetails").append(moment(@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.DateAsked))).lang("bg").fromNow());</script>
+            <br />
+            @if (HttpContext.Current.Session["Id"] != null)
+            {
+                if (Model.IsReported)
+                { 
+                <span>Reported</span> }
+                else
+                {
+                <a class="btn btn-primary btn-sm" href="/Questions/Report/@Model.Id">Докладвай</a>
+                }
+                if (HttpContext.Current.Session["Role"].ToString() == "Admin" || HttpContext.Current.Session["Role"].ToString() == "Moderator")
+                {
+                <a class="btn btn-danger btn-sm" href="/Questions/Delete/@Model.Id">Изтрий</a>
+                }
+            }
+            <br />
+            @foreach (var comment in Model.Comments)
+            {
+                <span class="comment" id="C@(comment.Id)">
+                    @comment.CommentBody
+                    <br />
+                    <a href="/Account/ProfileDetails/@comment.Author.Id">@comment.Author.Username</a> -
+                    <script>$("#C@(comment.Id)").append(moment(@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(comment.Date))).lang("bg").fromNow())</script>
+                    <br />
+                    @if (comment.IsReported)
+                    { <span>Докладван</span> }
+                    else
+                    { <a class="btn btn-primary btn-xs" href="/Comments/Report/@comment.Id">Докладвай</a> }
+                    @if (HttpContext.Current.Session["Role"] != null && (HttpContext.Current.Session["Role"].ToString() == "Admin" || HttpContext.Current.Session["Role"].ToString() == "Admin"))
+                    { <a class="btn btn-danger btn-xs" href="/Comments/Delete/@comment.Id">Изтрий</a> }
+                </span>
+                <br />
+            }
+        </span>
+
+        @if (HttpContext.Current.Session["Id"] != null)
+        {
+            <button class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#commentModal">Добави коментар</button>
+            
+            <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="commentModalLabel">Добави коментар</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="commentForm" action="/Comments/AddCommentToQuestion" method="post">
+                                <input type="hidden" name="questionId" value="@Model.Id" />
+                                Коментирай въпроса:<br />
+                                <textarea id="commentQBody" name="commentBody"></textarea>
+                                <span class="field-validation-error" id="errorMessageQ"></span>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="commentQbtn" class="btn btn-primary" type="submit" form="commentForm">Добави коментар</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        }
+
+        <h3>Отговори</h3>
+        <div id="answers">
+            @if (Model.Answers.Count == 0)
+            { <h4>Няма отговори на този въпрос. Бъдете първият отговорил!</h4>}
+            else
+            {
+                foreach (var answer in Model.Answers)
+                {
+                <div class="answer">
+                    <span class="answerBody" id="A@(answer.Id)">@answer.AnswerBody
+                        <br />
+                        @answer.Author.Username -
+                        <script>$("#A@(answer.Id)").append(moment(@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(answer.Date))).lang("bg").fromNow())</script>
+                        <br />
+                        @if (answer.IsReported)
+                        { <span>Докладван</span> }
+                        else
+                        { <a class="btn btn-primary btn-xs" href="/Answers/Report/@answer.Id">Докладвай</a>}
+                        @if (HttpContext.Current.Session["Role"] != null && (HttpContext.Current.Session["Role"].ToString() == "Admin" || HttpContext.Current.Session["Role"].ToString() == "Admin"))
+                        { <a class="btn btn-danger btn-xs" href="/Answers/Delete/@answer.Id">Изтрий</a> }
+                    </span>
+                    <br />
+                    @foreach (var comment in answer.Comments)
+                    {
+                        <span class="comment" id="C@(comment.Id)">
+                            @comment.CommentBody
+                            <br />
+                            <a href="/Account/ProfileDetails/@comment.Author.Id">@comment.Author.Username</a> -
+                            <script>$("#C@(comment.Id)").append(moment(@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(comment.Date))).lang("bg").fromNow())</script>
+                            <br />
+                            @if (comment.IsReported)
+                            { <span>Докладван</span> }
+                            else
+                            { <a class="btn btn-primary btn-xs" href="/Comments/Report/@comment.Id">Докладвай</a> }
+                            @if (HttpContext.Current.Session["Role"] != null && (HttpContext.Current.Session["Role"].ToString() == "Admin" || HttpContext.Current.Session["Role"].ToString() == "Admin"))
+                            { <a class="btn btn-danger btn-xs" href="/Comments/Delete/@comment.Id">Изтрий</a> }
+                        </span>
+                        <br />
+                    }
+
+                    @if (HttpContext.Current.Session["Id"] != null)
+                    {
+                        <button class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#commentAnswerModal@(answer.Id)">Добави коментар</button>
+                
+                        <div class="modal fade" id="commentAnswerModal@(answer.Id)" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="commentAnswerModalLabel">Добави коментар</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="commentAnswerForm@(answer.Id)" action="/Comments/AddCommentToAnswer" method="post">
+                                            <input type="hidden" name="questionId" value="@Model.Id" />
+                                            <input type="hidden" name="answerId" value="@answer.Id" />
+                                            Коментирай отговора:<br />
+                                            <textarea id="commentABody" name="commentBody"></textarea>
+                                            <span class="field-validation-error" id="errorMessageA"></span>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button id="commentAbtn" class="btn btn-primary" type="submit" form="commentAnswerForm@(answer.Id)">Добави коментар</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                    }
+                </div>   
+                }
+            }
+            @if (HttpContext.Current.Session["Username"] != null)
+            {
+                
+                <form id="answerForm" method="post" action="~/Questions/Answer" title="Answer the question">
+                    <textarea id="answerBody" name="answerBody" placeholder="Write your answer here..."></textarea>
+                    <br />
+                    <span id="answerErrorMessage" class="field-validation-error"></span>
+                    <input name="QuestionId" type="hidden" value="@Model.Id" />
+                    <input name="UserId" type="hidden" value="@HttpContext.Current.Session["Id"]" />
+                    <br />
+                    <button id="answerBtn" class="btn btn-primary" type="submit">Отговори</button>
+                </form>
+                
+            }
+        </div>
+    </fieldset>
+</div>
+
+<script>
+    $('document').ready(function () {
+
+        $('#commentQbtn').on('click', function () {
+            var comment = document.forms['commentForm']['commentBody'].value;
+            if (comment == null || comment == "") {
+                $('#commentQBody').addClass('input-validation-error');
+                $('#errorMessageQ').html("Comment must be filled.");
+                return false;
+            }
+        })
+
+        $('#commentAbtn').on('click', function () {
+            var comment = document.forms['commentAnswerForm']['commentABody'].value;
+            if (comment == null || comment == "") {
+                $('#commentABody').addClass('input-validation-error');
+                $('#errorMessageA').html("Comment must be filled.");
+                return false;
+            }
+        })
+
+        $('#answerBtn').on('click', function () {
+            var answer = document.forms['answerForm']['answerBody'].value;
+            if (answer == null || answer == "") {
+                $('#answerBody').addClass('input-validation-error');
+                $('#answerErrorMessage').html("Answer must be filled.");
+                return false;
+            }
+        })
+
+    })
+</script>

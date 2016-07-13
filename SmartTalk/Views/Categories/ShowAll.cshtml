@@ -1,0 +1,106 @@
+﻿@model SmartTalk.ViewModels.CategoriesShowViewModel
+
+@{
+    ViewBag.Title = "ShowAll";
+}
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+@Scripts.Render("~/bundles/jqueryval")
+
+<div class="container">
+        <h2>Категории</h2>
+        @foreach (var item in Model.Categories)
+        {
+            <div class="list">
+                    <a href="~/Categories/ShowQuestions/@item.Id/1">@item.Name
+                        <br />
+                        Въпроси: @item.NumberOfQuestions</a>             
+                </div>
+                if (HttpContext.Current.Session["Role"] != null && HttpContext.Current.Session["Role"].ToString() == "Admin")
+                {
+                        <a class="btn btn-danger btn-xs" href="~/Categories/Delete/@item.Id">Изтрий</a>
+                        <br />
+                }
+        }
+
+        @if (HttpContext.Current.Session["Role"] != null && (HttpContext.Current.Session["Role"].ToString() == "Member" || HttpContext.Current.Session["Role"].ToString() == "Moderator"))
+        {
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#requestModal" style="margin-top: 10px">Заяви категория</button>
+        <div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="requestModalLabel">Заяви категория</h4>
+                    </div>
+                    <div id="request_content" class="modal-body">
+                        <input type="text" id="request_name_textbox" />
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="button" id="request_button" >Заяви</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    @if (HttpContext.Current.Session["Role"] != null && HttpContext.Current.Session["Role"].ToString() == "Admin")
+    {
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#createModal" style="margin-top: 10px">Създай категория</button>
+        <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="createModalLabel">Създай категория</h4>
+                    </div>
+                    <div id="create_content" class="modal-body">
+                        <input type="text" id="create_name_textbox" />
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id="create_button" >Създай</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+<script>
+    $('document').ready(function () {
+
+        //Requesting category
+        $('#request_button').on('click', function () {
+            $.ajax({
+                dataType: "html",
+                type: "GET",
+                url: "Request/" + $('#request_name_textbox').val(),
+                success: function (result) {
+                    $('#request_content').html(result);
+
+                },
+                error: function () {
+                    alert("error");
+                }
+            })
+        })
+
+        //Creating category
+        $('#create_button').on('click', function () {
+            $.ajax({
+                dataType: 'html',
+                type: 'GET',
+                url: "Create/" + $('#create_name_textbox').val(),
+                success: function (result) {
+                    $('#create_content').html(result);
+                },
+                error: function(){
+                    alert("error");
+                }
+            })
+        })
+
+    })
+</script>
